@@ -171,18 +171,21 @@
             }
         }
         
+        @media (max-width: 900px) {
+            #catalog-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+            .promo-banner {
+                grid-column: span 3;
+            }
+        }
+
         @media (max-width: 600px) {
             #catalog-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
             }
             .promo-banner {
                 grid-column: span 2;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            #catalog-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
             }
         }
 
