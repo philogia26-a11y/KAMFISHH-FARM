@@ -205,8 +205,6 @@ section {
   font-size: 2.5rem;
   margin-bottom: 15px;
   color: #fff;
-  position: relative;
-  display: inline-block;
 }
 
 .section-subtitle {
@@ -384,6 +382,98 @@ footer {
   cursor: pointer;
 }
 
+/* Hero Section Utilities */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: var(--gradient-hero);
+    overflow: hidden;
+    padding-top: var(--header-height);
+    position: relative;
+}
+
+.hero-bg-element {
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 1;
+}
+
+.hero-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.hero-text {
+    max-width: 600px;
+}
+
+.hero-subtitle {
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    color: white;
+    font-family: var(--font-heading);
+}
+
+.hero-highlight {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--primary);
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.hero-image-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1/1;
+    border-radius: 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+@media (max-width: 991px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+}
+
 @media (max-width: 768px) {
   .nav-links {
     display: none; /* Add simple toggle logic later */
@@ -395,6 +485,7 @@ footer {
     flex-direction: column;
     padding: 20px;
     text-align: center;
+    border-bottom: 1px solid var(--border);
   }
 
   .nav-links.active {
@@ -408,6 +499,83 @@ footer {
   .section-title {
     font-size: 2rem;
   }
+  
+  /* Hero Responsive */
+  .hero-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 30px;
+      padding-bottom: 40px;
+  }
+  
+  .hero-text {
+      margin: 0 auto;
+      order: 2; /* Image first on mobile? or Text first? usually Image first for visual impact, but let's keep text first for SEO/Context unless user wants change. actually, let's keep text first for now. */
+  }
+  
+  .hero-buttons {
+      justify-content: center;
+  }
+  
+  .hero-image-wrapper {
+      justify-content: center;
+      order: 1; /* Image first on mobile */
+      margin-bottom: 20px;
+  }
+  
+  .hero-image {
+      max-width: 300px;
+  }
+  
+  /* Feature Grid Responsive */
+  .stats-grid {
+      grid-template-columns: 1fr;
+  }
+  
+  /* Footer Responsive */
+  .footer-content {
+      flex-direction: column;
+      gap: 30px;
+  }
+  
+  .footer-col {
+      width: 100%;
+  }
+
+  /* About Grid */
+  .about-grid {
+      grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .masonry-grid {
+        column-count: 2;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* Update Categories Grid to be responsive */
+#categories > .container > div {
+    display: grid !important; 
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important; /* Smaller min-width for mobile */
 }
 
 /* About Section */
@@ -482,8 +650,23 @@ textarea.form-input {
     resize: vertical;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .stats-grid {
+        justify-items: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-container form > div {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .stats-grid {
         grid-template-columns: 1fr;
     }
 }
@@ -493,6 +676,7 @@ textarea.form-input {
     column-count: 4;
     column-gap: 15px;
 }
+
 
 .masonry-item {
     break-inside: avoid;
